@@ -132,14 +132,14 @@ export function isSameDay(date1: Date, date2: Date) {
 
 export function getEventsForDay(events: CalendarEvent[], day: Date) {
   return events.filter(event => {
-    const eventStart = new Date(event.start)
-    eventStart.setHours(0, 0, 0, 0)
-    const eventEnd = new Date(event.end)
-    eventEnd.setHours(23, 59, 59, 999)
+    const eventStartDay = new Date(event.start)
+    eventStartDay.setHours(0, 0, 0, 0)
+    const eventEndDay = new Date(event.end)
+    eventEndDay.setHours(0, 0, 0, 0)
     const checkDay = new Date(day)
     checkDay.setHours(0, 0, 0, 0)
     
-    return checkDay >= eventStart && checkDay <= eventEnd
+    return checkDay >= eventStartDay && checkDay <= eventEndDay
   })
 }
 
